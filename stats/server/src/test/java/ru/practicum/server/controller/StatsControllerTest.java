@@ -1,6 +1,7 @@
 package ru.practicum.server.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -38,6 +39,19 @@ class StatsControllerTest {
     @Autowired
     private MockMvc mvc;
 
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+    private static List<ViewStatsDto> viewStatsDtoList;
+
+    @BeforeEach
+    void getViewStatsDtoList() {
+        viewStatsDtoList = List.of(
+                new ViewStatsDto("ewm-main-service", "/events/1", 3L),
+                new ViewStatsDto("ewm-main-service", "/events/2", 6L),
+                new ViewStatsDto("ewm-main-service", "/events/3", 9L)
+        );
+    }
+
     @Test
     void saveTest() throws Exception {
         EndpointHitDto endpointHitDto = new EndpointHitDto(1L,
@@ -60,16 +74,11 @@ class StatsControllerTest {
                 .andExpect(jsonPath("$.uri", is(endpointHitDto.getUri()), String.class))
                 .andExpect(jsonPath("$.ip", is(endpointHitDto.getIp()), String.class))
                 .andExpect(jsonPath("$.timestamp", is(endpointHitDto.getTimestamp()
-                        .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))), String.class));
+                        .format(FORMATTER)), String.class));
     }
 
     @Test
     void getTest() throws Exception {
-        List<ViewStatsDto> viewStatsDtoList = List.of(
-                new ViewStatsDto("ewm-main-service", "/events/1", 3L),
-                new ViewStatsDto("ewm-main-service", "/events/2", 6L),
-                new ViewStatsDto("ewm-main-service", "/events/3", 9L)
-        );
 
         when(statService.get(any(), any(), anyList(), anyBoolean())).thenReturn(viewStatsDtoList);
 
@@ -77,10 +86,10 @@ class StatsControllerTest {
                         .characterEncoding(StandardCharsets.UTF_8)
                         .param("start", LocalDateTime.now()
                                 .minusHours(1)
-                                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                                .format(FORMATTER))
                         .param("end", LocalDateTime.now()
                                 .plusHours(1)
-                                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                                .format(FORMATTER))
                         .param("uris", "/events/1, /events/2, /events/3")
                         .param("unique", "false")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -99,11 +108,6 @@ class StatsControllerTest {
 
     @Test
     void getTestWithWrongDates() throws Exception {
-        List<ViewStatsDto> viewStatsDtoList = List.of(
-                new ViewStatsDto("ewm-main-service", "/events/1", 3L),
-                new ViewStatsDto("ewm-main-service", "/events/2", 6L),
-                new ViewStatsDto("ewm-main-service", "/events/3", 9L)
-        );
 
         when(statService.get(any(), any(), anyList(), anyBoolean())).thenReturn(viewStatsDtoList);
 
@@ -111,10 +115,10 @@ class StatsControllerTest {
                         .characterEncoding(StandardCharsets.UTF_8)
                         .param("start", LocalDateTime.now()
                                 .plusHours(1)
-                                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                                .format(FORMATTER))
                         .param("end", LocalDateTime.now()
                                 .minusHours(1)
-                                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                                .format(FORMATTER))
                         .param("uris", "/events/1, /events/2, /events/3")
                         .param("unique", "false")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -127,11 +131,6 @@ class StatsControllerTest {
 
     @Test
     void getTestWithWrongParams() throws Exception {
-        List<ViewStatsDto> viewStatsDtoList = List.of(
-                new ViewStatsDto("ewm-main-service", "/events/1", 3L),
-                new ViewStatsDto("ewm-main-service", "/events/2", 6L),
-                new ViewStatsDto("ewm-main-service", "/events/3", 9L)
-        );
 
         when(statService.get(any(), any(), anyList(), anyBoolean())).thenReturn(viewStatsDtoList);
 
@@ -140,7 +139,7 @@ class StatsControllerTest {
                         // without "start"
                         .param("end", LocalDateTime.now()
                                 .minusHours(1)
-                                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                                .format(FORMATTER))
                         .param("uris", "/events/1, /events/2, /events/3")
                         .param("unique", "false")
                         .contentType(MediaType.APPLICATION_JSON)

@@ -10,8 +10,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
 public class ViewStatsMapperTest {
-    private final ViewStats entity = new ViewStats("ewm-main-service", "/events/1", 6L);
-    private final ViewStatsDto dto = new ViewStatsDto("ewm-main-service", "/events/1", 6L);
+    private static final String APP = "ewm-main-service";
+    private static final String BASE_URI = "/events/";
+
+    private final ViewStats entity = new ViewStats(APP, BASE_URI + "1", 6L);
+    private final ViewStatsDto dto = new ViewStatsDto(APP, BASE_URI + "1", 6L);
 
     @Test
     public void toViewStatsDtoTest() {
@@ -30,15 +33,15 @@ public class ViewStatsMapperTest {
     @Test
     public void toViewStatsListDtoTest() {
         List<ViewStats> viewStatsList = List.of(
-                new ViewStats("ewm-main-service", "/events/1", 3L),
-                new ViewStats("ewm-main-service", "/events/2", 6L),
-                new ViewStats("ewm-main-service", "/events/3", 9L)
+                new ViewStats(APP, BASE_URI + "1", 3L),
+                new ViewStats(APP, BASE_URI + "2", 6L),
+                new ViewStats(APP, BASE_URI + "3", 9L)
         );
 
         List<ViewStatsDto> viewStatsDtoList = List.of(
-                new ViewStatsDto("ewm-main-service", "/events/1", 3L),
-                new ViewStatsDto("ewm-main-service", "/events/2", 6L),
-                new ViewStatsDto("ewm-main-service", "/events/3", 9L)
+                new ViewStatsDto(APP, BASE_URI + "1", 3L),
+                new ViewStatsDto(APP, BASE_URI + "2", 6L),
+                new ViewStatsDto(APP, BASE_URI + "3", 9L)
         );
 
         List<ViewStatsDto> listDto = ViewStatsMapper.mapToListDto(viewStatsList);

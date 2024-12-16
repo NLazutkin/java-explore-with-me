@@ -17,12 +17,14 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 public class StatsController {
+    private static final String DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
+
     private final StatService service;
 
     @GetMapping("/stats")
     @ResponseStatus(HttpStatus.OK)
-    public List<ViewStatsDto> get(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime start,
-                                  @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime end,
+    public List<ViewStatsDto> get(@RequestParam @DateTimeFormat(pattern = DATE_PATTERN) LocalDateTime start,
+                                  @RequestParam @DateTimeFormat(pattern = DATE_PATTERN) LocalDateTime end,
                                   @RequestParam(required = false) List<String> uris,
                                   @RequestParam(defaultValue = "false") Boolean unique) {
         if (start.isAfter(end)) {

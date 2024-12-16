@@ -10,15 +10,19 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
 public class EndpointHitMapperTest {
+    private static final String APP = "ewm-main-service";
+    private static final String BASE_IP = "192.163.0.";
+    private static final String BASE_URI = "/events/";
+
     private final EndpointHit entity = new EndpointHit(1L,
-            "ewm-main-service",
-            "/events/1",
-            "192.163.0.1",
+            APP,
+            BASE_URI + "1",
+            BASE_IP + "1",
             LocalDateTime.of(2024, 1, 1, 12, 35, 10));
     private final EndpointHitDto dto = new EndpointHitDto(1L,
-            "ewm-main-service",
-            "/events/1",
-            "192.163.0.1",
+            APP,
+            BASE_URI + "1",
+            BASE_IP + "1",
             LocalDateTime.of(2024, 1, 1, 12, 35, 10));
 
     @Test

@@ -26,6 +26,10 @@ import static org.hamcrest.Matchers.*;
         properties = "spring.datasource.username=stats",
         webEnvironment = SpringBootTest.WebEnvironment.NONE)
 public class StatsServerServiceIntegrationTest {
+    private static final String APP = "ewm-main-service";
+    private static final String BASE_IP = "192.163.0.";
+    private static final String BASE_URI = "/events/";
+
     private final EntityManager em;
     private final StatService statService;
 
@@ -41,9 +45,9 @@ public class StatsServerServiceIntegrationTest {
 
     @Test
     void saveHitTest() {
-        EndpointHitDto endpointHitDto = makeEndpointHit("ewm-main-service",
-                "/events/1",
-                "192.163.0.1",
+        EndpointHitDto endpointHitDto = makeEndpointHit(APP,
+                BASE_URI + "1",
+                BASE_IP + "1",
                 LocalDateTime.of(2024, 1, 1, 12, 35, 10));
 
         statService.save(endpointHitDto);
@@ -62,17 +66,17 @@ public class StatsServerServiceIntegrationTest {
     void getHitsBetweenDatesTest() {
         LocalDateTime timestamp = LocalDateTime.of(2024, 1, 1, 12, 15, 10);
         List<EndpointHitDto> newHits = List.of(
-                makeEndpointHit("ewm-main-service",
-                        "/events/1",
-                        "192.163.0.1",
+                makeEndpointHit(APP,
+                        BASE_URI + "1",
+                        BASE_IP + "1",
                         timestamp),
-                makeEndpointHit("ewm-main-service",
-                        "/events/1",
-                        "192.163.0.1",
+                makeEndpointHit(APP,
+                        BASE_URI + "1",
+                        BASE_IP + "1",
                         timestamp.plusMinutes(10)),
-                makeEndpointHit("ewm-main-service",
-                        "/events/3",
-                        "192.163.0.3",
+                makeEndpointHit(APP,
+                        BASE_URI + "3",
+                        BASE_IP + "3",
                         timestamp.plusMinutes(20)));
 
         for (EndpointHitDto hit : newHits) {
@@ -81,15 +85,15 @@ public class StatsServerServiceIntegrationTest {
 
         List<ViewStatsDto> loadHits = statService.get(timestamp.minusMinutes(10),
                 timestamp.plusMinutes(30),
-                List.of("/events/1", "/events/2", "/events/3"),
+                List.of(BASE_URI + "1", BASE_URI + "2", BASE_URI + "3"),
                 Boolean.FALSE);
 
         assertThat(loadHits, hasSize(2));
-        MatcherAssert.assertThat(loadHits.get(0).getApp(),  CoreMatchers.equalTo(newHits.get(0).getApp()));
-        MatcherAssert.assertThat(loadHits.get(0).getUri(),  CoreMatchers.equalTo(newHits.get(0).getUri()));
+        MatcherAssert.assertThat(loadHits.get(0).getApp(), CoreMatchers.equalTo(newHits.get(0).getApp()));
+        MatcherAssert.assertThat(loadHits.get(0).getUri(), CoreMatchers.equalTo(newHits.get(0).getUri()));
         MatcherAssert.assertThat(loadHits.get(0).getHits(), CoreMatchers.equalTo(2L));
-        MatcherAssert.assertThat(loadHits.get(1).getApp(),  CoreMatchers.equalTo(newHits.get(2).getApp()));
-        MatcherAssert.assertThat(loadHits.get(1).getUri(),  CoreMatchers.equalTo(newHits.get(2).getUri()));
+        MatcherAssert.assertThat(loadHits.get(1).getApp(), CoreMatchers.equalTo(newHits.get(2).getApp()));
+        MatcherAssert.assertThat(loadHits.get(1).getUri(), CoreMatchers.equalTo(newHits.get(2).getUri()));
         MatcherAssert.assertThat(loadHits.get(1).getHits(), CoreMatchers.equalTo(1L));
     }
 
@@ -97,17 +101,17 @@ public class StatsServerServiceIntegrationTest {
     void getUniqueHitsBetweenDatesTest() {
         LocalDateTime timestamp = LocalDateTime.of(2024, 1, 1, 12, 15, 10);
         List<EndpointHitDto> newHits = List.of(
-                makeEndpointHit("ewm-main-service",
-                        "/events/1",
-                        "192.163.0.1",
+                makeEndpointHit(APP,
+                        BASE_URI + "1",
+                        BASE_IP + "1",
                         timestamp),
-                makeEndpointHit("ewm-main-service",
-                        "/events/1",
-                        "192.163.0.1",
+                makeEndpointHit(APP,
+                        BASE_URI + "1",
+                        BASE_IP + "1",
                         timestamp.plusMinutes(10)),
-                makeEndpointHit("ewm-main-service",
-                        "/events/3",
-                        "192.163.0.3",
+                makeEndpointHit(APP,
+                        BASE_URI + "3",
+                        BASE_IP + "3",
                         timestamp.plusMinutes(20)));
 
         for (EndpointHitDto hit : newHits) {
@@ -116,15 +120,15 @@ public class StatsServerServiceIntegrationTest {
 
         List<ViewStatsDto> loadHits = statService.get(timestamp.minusMinutes(10),
                 timestamp.plusMinutes(30),
-                List.of("/events/1", "/events/2", "/events/3"),
+                List.of(BASE_URI + "1", BASE_URI + "2", BASE_URI + "3"),
                 Boolean.TRUE);
 
         assertThat(loadHits, hasSize(2));
-        MatcherAssert.assertThat(loadHits.get(0).getApp(),  CoreMatchers.equalTo(newHits.get(0).getApp()));
-        MatcherAssert.assertThat(loadHits.get(0).getUri(),  CoreMatchers.equalTo(newHits.get(0).getUri()));
+        MatcherAssert.assertThat(loadHits.get(0).getApp(), CoreMatchers.equalTo(newHits.get(0).getApp()));
+        MatcherAssert.assertThat(loadHits.get(0).getUri(), CoreMatchers.equalTo(newHits.get(0).getUri()));
         MatcherAssert.assertThat(loadHits.get(0).getHits(), CoreMatchers.equalTo(1L));
-        MatcherAssert.assertThat(loadHits.get(1).getApp(),  CoreMatchers.equalTo(newHits.get(2).getApp()));
-        MatcherAssert.assertThat(loadHits.get(1).getUri(),  CoreMatchers.equalTo(newHits.get(2).getUri()));
+        MatcherAssert.assertThat(loadHits.get(1).getApp(), CoreMatchers.equalTo(newHits.get(2).getApp()));
+        MatcherAssert.assertThat(loadHits.get(1).getUri(), CoreMatchers.equalTo(newHits.get(2).getUri()));
         MatcherAssert.assertThat(loadHits.get(1).getHits(), CoreMatchers.equalTo(1L));
     }
 }
