@@ -140,10 +140,9 @@ class StatsControllerTest {
                         .param("unique", "false")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().is5xxServerError())
+                .andExpect(status().is4xxClientError())
                 .andExpect(result -> assertInstanceOf(Throwable.class, result.getResolvedException()))
-                .andExpect(result -> assertEquals("Required request parameter 'start' for method parameter " +
-                                "type LocalDateTime is not present",
+                .andExpect(result -> assertEquals("Не задана дата начала или окончания периода поиска статистики!",
                         Objects.requireNonNull(result.getResolvedException()).getMessage()));
     }
 }
