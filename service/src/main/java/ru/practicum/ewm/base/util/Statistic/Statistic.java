@@ -58,8 +58,8 @@ public class Statistic {
     }
 
     private LocalDateTime findEndDate(Set<Event> events) {
-        return events.stream().
-                map(Event::getEventDate)
+        return events.stream()
+                .map(Event::getEventDate)
                 .max(LocalDateTime::compareTo)
                 .orElse(LocalDateTime.of(9999, 12, 31, 23, 59, 59));
     }
