@@ -1,10 +1,10 @@
-package ru.practicum.server.exception;
+package ru.practicum.ewm.base.exceptions.ErrorBase;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
-import ru.practicum.server.mapper.DateTimeMapper;
+import ru.practicum.ewm.base.mapper.DateTimeMapper;
 
 import java.time.LocalDateTime;
 
