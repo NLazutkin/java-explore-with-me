@@ -44,7 +44,7 @@ public class AdminUserServiceImpl implements AdminUserService {
         try {
             user = userRepository.save(user);
         } catch (DataIntegrityViolationException e) {
-            throw new ConflictException("Данный email уже занят", e);
+            throw new ConflictException(String.format("Email %s уже занят", user.getEmail()), e);
         }
         log.info("Сохраняем данные о пользователе {}", request.getName());
         return UserMapper.mapToDto(user);

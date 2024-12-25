@@ -44,7 +44,7 @@ public class AdminCategoryServiceImpl implements AdminCategoryService {
         try {
             category = categoryRepository.save(category);
         } catch (DataIntegrityViolationException e) {
-            throw new ConflictException("Категория уже существует", e);
+            throw new ConflictException(String.format("Категория \"%s\" уже существует", category.getName()), e);
         }
         log.info("Сохраняем данные о категории {}", request.getName());
         return CategoryMapper.mapToDto(category);
@@ -66,7 +66,8 @@ public class AdminCategoryServiceImpl implements AdminCategoryService {
     public void delete(Long categoryId) {
         Category category = findById(categoryId);
         if (eventRepository.existsByCategory(category)) {
-            throw new ConditionsNotMetException("Существуют события связанные с категорией");
+            throw new ConditionsNotMetException(String.format("Существуют события связанные с категорией %s, " +
+                    "удаление категории невозможно!", category.getName()));
         } else {
             categoryRepository.deleteById(categoryId);
             log.info("Категория \"{}\" удалена", category.getName());

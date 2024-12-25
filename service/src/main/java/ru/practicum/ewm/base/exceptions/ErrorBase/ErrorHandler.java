@@ -60,7 +60,7 @@ public class ErrorHandler {
         log.error(HttpStatus.BAD_REQUEST.toString(), e.getLocalizedMessage(), e.getMessage());
         return new ErrorResponse(
                 HttpStatus.BAD_REQUEST.toString(),
-                "Объект запроса не найден",
+                "Неправильно составлен запрос",
                 e.getMessage());
     }
 
@@ -71,7 +71,6 @@ public class ErrorHandler {
     public ErrorResponse validationMethodArgumentNotValidException(final MethodArgumentNotValidException e) {
         log.error(HttpStatus.BAD_REQUEST.toString(), e.getLocalizedMessage(), e.getMessage());
         String field = Objects.requireNonNull(e.getFieldError()).getField();
-
         return new ErrorResponse(
                 HttpStatus.BAD_REQUEST.toString(),
                 "Неправильно составлен запрос",

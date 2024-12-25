@@ -51,7 +51,7 @@ public class AdminCompilationServiceImpl implements AdminCompilationService {
         try {
             compilation = compilationRepository.save(compilation);
         } catch (DataIntegrityViolationException e) {
-            throw new ConflictException("Данный email уже занят", e);
+            throw new ConflictException(String.format("Подборка с заголовком %s уже существует", compilation.getTitle()), e);
         }
 
         log.info("Сохраняем данные о подборке {}", compilation.getTitle());
