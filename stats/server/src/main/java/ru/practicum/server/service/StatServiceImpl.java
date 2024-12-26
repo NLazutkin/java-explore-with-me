@@ -34,10 +34,10 @@ public class StatServiceImpl implements StatService {
 
         if (unique.equals(Boolean.TRUE)) {
             log.info("Получаем статистику обращений с {} по {}", start, end);
-            return ViewStatsMapper.mapToListDto(statsRepository.getUniqueHits(start, end, uris, pageable));
+            return ViewStatsMapper.mapToListDto(statsRepository.getUniqueHits(start.minusSeconds(1), end.plusSeconds(1), uris, pageable));
         } else {
             log.info("Получаем статистику уникальных обращений с {} по {}", start, end);
-            return ViewStatsMapper.mapToListDto(statsRepository.getHits(start, end, uris, pageable));
+            return ViewStatsMapper.mapToListDto(statsRepository.getHits(start.minusSeconds(1), end.plusSeconds(1), uris, pageable));
         }
     }
 

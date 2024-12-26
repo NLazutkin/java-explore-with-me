@@ -113,9 +113,7 @@ class StatsControllerTest {
 
         mvc.perform(get("/stats")
                         .characterEncoding(StandardCharsets.UTF_8)
-                        .param("start", LocalDateTime.now()
-                                .plusHours(1)
-                                .format(FORMATTER))
+                        .param("start", LocalDateTime.now().plusHours(1).format(FORMATTER))
                         .param("end", LocalDateTime.now()
                                 .minusHours(1)
                                 .format(FORMATTER))
@@ -137,17 +135,14 @@ class StatsControllerTest {
         mvc.perform(get("/stats")
                         .characterEncoding(StandardCharsets.UTF_8)
                         // without "start"
-                        .param("end", LocalDateTime.now()
-                                .minusHours(1)
-                                .format(FORMATTER))
+                        .param("end", LocalDateTime.now().minusHours(1).format(FORMATTER))
                         .param("uris", "/events/1, /events/2, /events/3")
                         .param("unique", "false")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().is5xxServerError())
+                .andExpect(status().is4xxClientError())
                 .andExpect(result -> assertInstanceOf(Throwable.class, result.getResolvedException()))
-                .andExpect(result -> assertEquals("Required request parameter 'start' for method parameter " +
-                                "type LocalDateTime is not present",
+                .andExpect(result -> assertEquals("Не задана дата начала или окончания периода поиска статистики!",
                         Objects.requireNonNull(result.getResolvedException()).getMessage()));
     }
 }

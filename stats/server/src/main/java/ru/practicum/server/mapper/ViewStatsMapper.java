@@ -28,7 +28,7 @@ public class ViewStatsMapper {
         return viewStats;
     }
 
-    public static List<ViewStatsDto> mapToListDto(List<ViewStats> listDto) {
-        return listDto.stream().map(ViewStatsMapper::mapToDto).collect(Collectors.toList());
+    public static List<ViewStatsDto> mapToListDto(List<ViewStats> listEntity) {
+        return listEntity.stream().map(ViewStatsMapper::mapToDto).collect(Collectors.toList());
     }
 }
