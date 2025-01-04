@@ -239,7 +239,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"annotation\":\"Annotation for Event 1\",\r\n    \"category\": 1,\r\n\t\"description\":\"Description for Event 1\",\r\n\t\"eventDate\":\"2025-01-29 12:12:12\",\r\n\t\"location\": {\r\n        \"lat\": 1.00,\r\n        \"lon\": 1.00\r\n        },\r\n\t\"paid\": true,\r\n\t\"participantLimit\": 50,\r\n\t\"requestModeration\": false,\r\n\t\"title\":\"Title for Event 1\"\r\n}",
+					"raw": "{\r\n    \"annotation\":\"Annotation for Event 1\",\r\n    \"category\": 122,\r\n\t\"description\":\"Description for Event 1\",\r\n\t\"eventDate\":\"2025-01-29 12:12:12\",\r\n\t\"location\": {\r\n        \"lat\": 1.00,\r\n        \"lon\": 1.00\r\n        },\r\n\t\"paid\": true,\r\n\t\"participantLimit\": 50,\r\n\t\"requestModeration\": false,\r\n\t\"title\":\"Title for Event 1\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -247,7 +247,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/users/1/events",
+					"raw": "http://localhost:8080/users/137/events",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -255,7 +255,7 @@
 					"port": "8080",
 					"path": [
 						"users",
-						"1",
+						"137",
 						"events"
 					]
 				}
@@ -317,7 +317,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"annotation\":\"Annotation for Event 2\",\r\n    \"category\": 1,\r\n\t\"description\":\"Description for Event 2\",\r\n\t\"eventDate\":\"2025-01-29 12:12:12\",\r\n\t\"location\": {\r\n        \"lat\": 2.00,\r\n        \"lon\": 2.00\r\n        },\r\n\t\"paid\": true,\r\n\t\"participantLimit\": 40,\r\n\t\"requestModeration\": false,\r\n\t\"title\":\"Title for Event 2\"\r\n}",
+					"raw": "{\r\n    \"annotation\":\"Annotation for Event 2\",\r\n    \"category\": 122,\r\n\t\"description\":\"Description for Event 2\",\r\n\t\"eventDate\":\"2025-01-29 12:12:12\",\r\n\t\"location\": {\r\n        \"lat\": 2.00,\r\n        \"lon\": 2.00\r\n        },\r\n\t\"paid\": true,\r\n\t\"participantLimit\": 40,\r\n\t\"requestModeration\": false,\r\n\t\"title\":\"Title for Event 2\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -325,7 +325,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/users/1/events",
+					"raw": "http://localhost:8080/users/137/events",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -333,7 +333,7 @@
 					"port": "8080",
 					"path": [
 						"users",
-						"1",
+						"137",
 						"events"
 					]
 				}
@@ -500,7 +500,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/admin/events/1",
+					"raw": "http://localhost:8080/admin/events/107",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -509,7 +509,7 @@
 					"path": [
 						"admin",
 						"events",
-						"1"
+						"107"
 					]
 				}
 			},
@@ -581,7 +581,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/admin/events/2",
+					"raw": "http://localhost:8080/admin/events/108",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -590,7 +590,7 @@
 					"path": [
 						"admin",
 						"events",
-						"2"
+						"108"
 					]
 				}
 			},
@@ -624,14 +624,14 @@
 							"\r",
 							"pm.test(\"Данные в ответе должны соответствовать данным в запросе\", function () {\r",
 							"    pm.expect(target.id).to.not.be.null;\r",
-							"    pm.expect(target.text).equal(\"Positive comment from Initiator\", 'Текст коментария должен соответствовать тексту в запросе');\r",
+							"    pm.expect(target.text).equal(\"Positive comment from Initiator\", 'Текст комментария должен соответствовать тексту в запросе');\r",
 							"    pm.expect(target.event).to.not.be.null;\r",
-							"    pm.expect(target.event).equal(1, 'ID события должено быть = 1');\r",
-							"    pm.expect(target.author.id).equal(1, 'ID пользователя должено быть = 1');\r",
+							"    pm.expect(target.event).equal(107, 'ID события должно быть = 107');\r",
+							"    pm.expect(target.author.id).equal(137, 'ID пользователя должно быть = 137');\r",
 							"    pm.expect(target.author.name).equal(\"Initiator I.I.\", 'Имя пользователя должно быть = Initiator I.I.');\r",
 							"    pm.expect(target.author.email).equal(\"Initiator@yandex.ru\", 'Email пользователя должен быть = Initiator@yandex.ru');\r",
 							"    pm.expect(target.created).to.not.be.null;\r",
-							"    pm.expect(target.positive.toString()).equal(\"true\", 'Тип коментария должен соответствовать типу в запросе');\r",
+							"    pm.expect(target.positive.toString()).equal(\"true\", 'Тип комментария должен соответствовать типу в запросе');\r",
 							"    pm.expect(target.lastModify).to.not.be.null;\r",
 							"});"
 						],
@@ -642,8 +642,11 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"packages": {},
-						"type": "text/javascript"
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -660,7 +663,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/users/1/comments/1",
+					"raw": "http://localhost:8080/users/137/comments/107",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -668,9 +671,9 @@
 					"port": "8080",
 					"path": [
 						"users",
-						"1",
+						"137",
 						"comments",
-						"1"
+						"107"
 					]
 				}
 			},
@@ -704,14 +707,14 @@
 							"\r",
 							"pm.test(\"Данные в ответе должны соответствовать данным в запросе\", function () {\r",
 							"    pm.expect(target.id).to.not.be.null;\r",
-							"    pm.expect(target.text).equal(\"Positive comment from Guest 1 to Event 1\", 'Текст коментария должен соответствовать тексту в запросе');\r",
+							"    pm.expect(target.text).equal(\"Positive comment from Guest 1 to Event 1\", 'Текст комментария должен соответствовать тексту в запросе');\r",
 							"    pm.expect(target.event).to.not.be.null;\r",
-							"    pm.expect(target.event).equal(1, 'ID события должено быть = 1');\r",
-							"    pm.expect(target.author.id).equal(2, 'ID пользователя должено быть = 2');\r",
+							"    pm.expect(target.event).equal(107, 'ID события должно быть = 107');\r",
+							"    pm.expect(target.author.id).equal(138, 'ID пользователя должно быть = 138');\r",
 							"    pm.expect(target.author.name).equal(\"Guest1 G.G.\", 'Имя пользователя должно быть = Guest1 G.G.');\r",
 							"    pm.expect(target.author.email).equal(\"Guest1@yandex.ru\", 'Email пользователя должен быть = Guest1@yandex.ru');\r",
 							"    pm.expect(target.created).to.not.be.null;\r",
-							"    pm.expect(target.positive.toString()).equal(\"true\", 'Тип коментария должен соответствовать типу в запросе');\r",
+							"    pm.expect(target.positive.toString()).equal(\"true\", 'Тип комментария должен соответствовать типу в запросе');\r",
 							"    pm.expect(target.lastModify).to.not.be.null;\r",
 							"});"
 						],
@@ -733,7 +736,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/users/2/comments/1",
+					"raw": "http://localhost:8080/users/138/comments/107",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -741,9 +744,9 @@
 					"port": "8080",
 					"path": [
 						"users",
-						"2",
+						"138",
 						"comments",
-						"1"
+						"107"
 					]
 				}
 			},
@@ -780,7 +783,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/users/2/comments/1",
+					"raw": "http://localhost:8080/users/138/comments/107",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -788,9 +791,9 @@
 					"port": "8080",
 					"path": [
 						"users",
-						"2",
+						"138",
 						"comments",
-						"1"
+						"107"
 					]
 				}
 			},
@@ -824,14 +827,14 @@
 							"\r",
 							"pm.test(\"Данные в ответе должны соответствовать данным в запросе\", function () {\r",
 							"    pm.expect(target.id).to.not.be.null;\r",
-							"    pm.expect(target.text).equal(\"Positive comment from Guest 1 to Event 2\", 'Текст коментария должен соответствовать тексту в запросе');\r",
+							"    pm.expect(target.text).equal(\"Positive comment from Guest 1 to Event 2\", 'Текст комментария должен соответствовать тексту в запросе');\r",
 							"    pm.expect(target.event).to.not.be.null;\r",
-							"    pm.expect(target.event).equal(2, 'ID события должено быть = 2');\r",
-							"    pm.expect(target.author.id).equal(2, 'ID пользователя должено быть = 2');\r",
+							"    pm.expect(target.event).equal(108, 'ID события должно быть = 108');\r",
+							"    pm.expect(target.author.id).equal(138, 'ID пользователя должно быть = 138');\r",
 							"    pm.expect(target.author.name).equal(\"Guest1 G.G.\", 'Имя пользователя должно быть = Guest1 G.G.');\r",
 							"    pm.expect(target.author.email).equal(\"Guest1@yandex.ru\", 'Email пользователя должен быть = Guest1@yandex.ru');\r",
 							"    pm.expect(target.created).to.not.be.null;\r",
-							"    pm.expect(target.positive.toString()).equal(\"false\", 'Тип коментария должен соответствовать типу в запросе');\r",
+							"    pm.expect(target.positive.toString()).equal(\"false\", 'Тип комментария должен соответствовать типу в запросе');\r",
 							"    pm.expect(target.lastModify).to.not.be.null;\r",
 							"});"
 						],
@@ -853,7 +856,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/users/2/comments/2",
+					"raw": "http://localhost:8080/users/138/comments/108",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -861,9 +864,9 @@
 					"port": "8080",
 					"path": [
 						"users",
-						"2",
+						"138",
 						"comments",
-						"2"
+						"108"
 					]
 				}
 			},
@@ -900,7 +903,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/users/1/comments/4",
+					"raw": "http://localhost:8080/users/137/comments/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -908,7 +911,7 @@
 					"port": "8080",
 					"path": [
 						"users",
-						"1",
+						"137",
 						"comments",
 						"4"
 					]
@@ -944,14 +947,14 @@
 							"\r",
 							"pm.test(\"Данные в ответе должны соответствовать данным в запросе\", function () {\r",
 							"    pm.expect(target.id).to.not.be.null;\r",
-							"    pm.expect(target.text).equal(\"Negative comment from Guest 1 to Event 2\", 'Текст коментария должен соответствовать тексту в запросе');\r",
+							"    pm.expect(target.text).equal(\"Negative comment from Guest 1 to Event 2\", 'Текст комментария должен соответствовать тексту в запросе');\r",
 							"    pm.expect(target.event).to.not.be.null;\r",
-							"    pm.expect(target.event).equal(2, 'ID события должено быть = 2');\r",
-							"    pm.expect(target.author.id).equal(2, 'ID пользователя должено быть = 2');\r",
+							"    pm.expect(target.event).equal(108, 'ID события должно быть = 108');\r",
+							"    pm.expect(target.author.id).equal(138, 'ID пользователя должно быть = 138');\r",
 							"    pm.expect(target.author.name).equal(\"Guest1 G.G.\", 'Имя пользователя должно быть = Guest1 G.G.');\r",
 							"    pm.expect(target.author.email).equal(\"Guest1@yandex.ru\", 'Email пользователя должен быть = Guest1@yandex.ru');\r",
 							"    pm.expect(target.created).to.not.be.null;\r",
-							"    pm.expect(target.positive.toString()).equal(\"false\", 'Тип коментария должен соответствовать типу в запросе');\r",
+							"    pm.expect(target.positive.toString()).equal(\"false\", 'Тип комментария должен соответствовать типу в запросе');\r",
 							"    pm.expect(target.lastModify).to.not.be.null;\r",
 							"    pm.expect(target.created < target.lastModify);\r",
 							"});"
@@ -974,7 +977,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/users/2/comments/4",
+					"raw": "http://localhost:8080/users/138/comments/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -982,7 +985,7 @@
 					"port": "8080",
 					"path": [
 						"users",
-						"2",
+						"138",
 						"comments",
 						"4"
 					]
@@ -1019,7 +1022,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/users/2/comments",
+					"raw": "http://localhost:8080/users/138/comments",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1027,7 +1030,7 @@
 					"port": "8080",
 					"path": [
 						"users",
-						"2",
+						"138",
 						"comments"
 					]
 				}
@@ -1065,14 +1068,14 @@
 							"\r",
 							"pm.test(\"Данные в ответе должны соответствовать данным в запросе\", function () {\r",
 							"    pm.expect(target[0].id).to.not.be.null;\r",
-							"    pm.expect(target[0].text).equal(\"Positive comment from Guest 1 to Event 1\", 'Текст коментария должен соответствовать тексту в запросе');\r",
+							"    pm.expect(target[0].text).equal(\"Positive comment from Guest 1 to Event 1\", 'Текст комментария должен соответствовать тексту в запросе');\r",
 							"    pm.expect(target[0].event).to.not.be.null;\r",
-							"    pm.expect(target[0].event).equal(1, 'ID события должено быть = 1');\r",
-							"    pm.expect(target[0].author.id).equal(2, 'ID пользователя должено быть = 2');\r",
+							"    pm.expect(target[0].event).equal(107, 'ID события должно быть = 107');\r",
+							"    pm.expect(target[0].author.id).equal(138, 'ID пользователя должно быть = 138');\r",
 							"    pm.expect(target[0].author.name).equal(\"Guest1 G.G.\", 'Имя пользователя должно быть = Guest1 G.G.');\r",
 							"    pm.expect(target[0].author.email).equal(\"Guest1@yandex.ru\", 'Email пользователя должен быть = Guest1@yandex.ru');\r",
 							"    pm.expect(target[0].created).to.not.be.null;\r",
-							"    pm.expect(target[0].positive.toString()).equal(\"true\", 'Тип коментария должен соответствовать типу в запросе');\r",
+							"    pm.expect(target[0].positive.toString()).equal(\"true\", 'Тип комментария должен соответствовать типу в запросе');\r",
 							"    pm.expect(target[0].lastModify).to.not.be.null;\r",
 							"});"
 						],
@@ -1085,7 +1088,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/users/2/comments/1",
+					"raw": "http://localhost:8080/users/138/comments/107",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1093,16 +1096,16 @@
 					"port": "8080",
 					"path": [
 						"users",
-						"2",
+						"138",
 						"comments",
-						"1"
+						"107"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Get Guest 1 comments of Event 1 by ID",
+			"name": "Get Guest 1 comments of Event 2 by ID",
 			"event": [
 				{
 					"listen": "test",
@@ -1128,14 +1131,14 @@
 							"\r",
 							"pm.test(\"Данные в ответе должны соответствовать данным в запросе\", function () {\r",
 							"    pm.expect(target.id).to.not.be.null;\r",
-							"    pm.expect(target.text).equal(\"Negative comment from Guest 1 to Event 2\", 'Текст коментария должен соответствовать тексту в запросе');\r",
+							"    pm.expect(target.text).equal(\"Negative comment from Guest 1 to Event 2\", 'Текст комментария должен соответствовать тексту в запросе');\r",
 							"    pm.expect(target.event).to.not.be.null;\r",
-							"    pm.expect(target.event).equal(2, 'ID события должено быть = 2');\r",
-							"    pm.expect(target.author.id).equal(2, 'ID пользователя должено быть = 2');\r",
+							"    pm.expect(target.event).equal(108, 'ID события должно быть = 108');\r",
+							"    pm.expect(target.author.id).equal(138, 'ID пользователя должно быть = 138');\r",
 							"    pm.expect(target.author.name).equal(\"Guest1 G.G.\", 'Имя пользователя должно быть = Guest1 G.G.');\r",
 							"    pm.expect(target.author.email).equal(\"Guest1@yandex.ru\", 'Email пользователя должен быть = Guest1@yandex.ru');\r",
 							"    pm.expect(target.created).to.not.be.null;\r",
-							"    pm.expect(target.positive.toString()).equal(\"false\", 'Тип коментария должен соответствовать типу в запросе');\r",
+							"    pm.expect(target.positive.toString()).equal(\"false\", 'Тип комментария должен соответствовать типу в запросе');\r",
 							"    pm.expect(target.lastModify).to.not.be.null;\r",
 							"});"
 						],
@@ -1148,7 +1151,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/users/2/comments/2/4",
+					"raw": "http://localhost:8080/users/138/comments/108/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1156,9 +1159,9 @@
 					"port": "8080",
 					"path": [
 						"users",
-						"2",
+						"138",
 						"comments",
-						"2",
+						"108",
 						"4"
 					]
 				}
@@ -1187,7 +1190,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/users/2/comments/1",
+					"raw": "http://localhost:8080/users/138/comments/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1195,7 +1198,7 @@
 					"port": "8080",
 					"path": [
 						"users",
-						"2",
+						"138",
 						"comments",
 						"1"
 					]
@@ -1223,7 +1226,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/users/1/comments/1",
+					"raw": "http://localhost:8080/users/137/comments/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1231,7 +1234,7 @@
 					"port": "8080",
 					"path": [
 						"users",
-						"1",
+						"137",
 						"comments",
 						"1"
 					]
@@ -1318,7 +1321,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/admin/comments?users=2",
+					"raw": "http://localhost:8080/admin/comments?users=138",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1331,7 +1334,7 @@
 					"query": [
 						{
 							"key": "users",
-							"value": "2",
+							"value": "138",
 							"description": "Users identificators"
 						}
 					]
@@ -1370,7 +1373,7 @@
 							"\r",
 							"pm.test(\"Данные в ответе должны соответствовать данным в запросе\", function () {\r",
 							"    pm.expect(target[0].event).to.not.be.null;\r",
-							"    pm.expect(target[0].event).equal(1, 'ID события должено быть = 1');\r",
+							"    pm.expect(target[0].event).equal(107, 'ID события должно быть = 107');\r",
 							"});\r",
 							""
 						],
@@ -1383,7 +1386,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/admin/comments?events=1",
+					"raw": "http://localhost:8080/admin/comments?events=107",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1396,7 +1399,7 @@
 					"query": [
 						{
 							"key": "events",
-							"value": "1",
+							"value": "107",
 							"description": "events identificators"
 						}
 					]
@@ -1553,14 +1556,14 @@
 							"\r",
 							"pm.test(\"Данные в ответе должны соответствовать данным в запросе\", function () {\r",
 							"    pm.expect(target.id).to.not.be.null;\r",
-							"    pm.expect(target.text).equal(\"Negative comment from Initiator\", 'Текст коментария должен соответствовать тексту в запросе');\r",
+							"    pm.expect(target.text).equal(\"Negative comment from Initiator\", 'Текст комментария должен соответствовать тексту в запросе');\r",
 							"    pm.expect(target.event).to.not.be.null;\r",
-							"    pm.expect(target.event).equal(2, 'ID события должено быть = 2');\r",
-							"    pm.expect(target.author.id).equal(1, 'ID пользователя должено быть = 1');\r",
+							"    pm.expect(target.event).equal(107, 'ID события должно быть = 107');\r",
+							"    pm.expect(target.author.id).equal(137, 'ID пользователя должно быть = 137');\r",
 							"    pm.expect(target.author.name).equal(\"Initiator I.I.\", 'Имя пользователя должно быть = Initiator I.I.');\r",
 							"    pm.expect(target.author.email).equal(\"Initiator@yandex.ru\", 'Email пользователя должен быть = Initiator@yandex.ru');\r",
 							"    pm.expect(target.created).to.not.be.null;\r",
-							"    pm.expect(target.positive.toString()).equal(\"false\", 'Тип коментария должен соответствовать типу в запросе');\r",
+							"    pm.expect(target.positive.toString()).equal(\"false\", 'Тип комментария должен соответствовать типу в запросе');\r",
 							"    pm.expect(target.lastModify).to.not.be.null;\r",
 							"});"
 						],
@@ -1592,7 +1595,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/users/1/comments/2",
+					"raw": "http://localhost:8080/users/137/comments/107",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1600,9 +1603,9 @@
 					"port": "8080",
 					"path": [
 						"users",
-						"1",
+						"137",
 						"comments",
-						"2"
+						"107"
 					]
 				}
 			},
@@ -1636,14 +1639,14 @@
 							"\r",
 							"pm.test(\"Данные в ответе должны соответствовать данным в запросе\", function () {\r",
 							"    pm.expect(target.id).to.not.be.null;\r",
-							"    pm.expect(target.text).equal(\"Positive comment from Initiator\", 'Текст коментария должен соответствовать тексту в запросе');\r",
+							"    pm.expect(target.text).equal(\"Positive comment from Initiator\", 'Текст комментария должен соответствовать тексту в запросе');\r",
 							"    pm.expect(target.event).to.not.be.null;\r",
-							"    pm.expect(target.event).equal(2, 'ID события должено быть = 2');\r",
-							"    pm.expect(target.author.id).equal(1, 'ID пользователя должено быть = 1');\r",
+							"    pm.expect(target.event).equal(107, 'ID события должно быть = 107');\r",
+							"    pm.expect(target.author.id).equal(137, 'ID пользователя должно быть = 137');\r",
 							"    pm.expect(target.author.name).equal(\"Initiator I.I.\", 'Имя пользователя должно быть = Initiator I.I.');\r",
 							"    pm.expect(target.author.email).equal(\"Initiator@yandex.ru\", 'Email пользователя должен быть = Initiator@yandex.ru');\r",
 							"    pm.expect(target.created).to.not.be.null;\r",
-							"    pm.expect(target.positive.toString()).equal(\"true\", 'Тип коментария должен соответствовать типу в запросе');\r",
+							"    pm.expect(target.positive.toString()).equal(\"true\", 'Тип комментария должен соответствовать типу в запросе');\r",
 							"    pm.expect(target.lastModify).to.not.be.null;\r",
 							"    pm.expect(target.created < target.lastModify);\r",
 							"});"
@@ -1731,7 +1734,7 @@
 							"\r",
 							"const target = pm.response.json();\r",
 							"\r",
-							"pm.test(\"Должен быть найден только один комментарий\", function () {\r",
+							"pm.test(\"Коментариев быть не должно\", function () {\r",
 							"    pm.expect(target.length).to.eql(0);\r",
 							"});\r",
 							""
@@ -1745,7 +1748,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/comments/event/1?positive=false",
+					"raw": "http://localhost:8080/comments/event/107?positive=false",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1754,7 +1757,7 @@
 					"path": [
 						"comments",
 						"event",
-						"1"
+						"107"
 					],
 					"query": [
 						{
@@ -1856,8 +1859,8 @@
 							"\r",
 							"const target = pm.response.json();\r",
 							"\r",
-							"pm.test(\"Должен быть найден только один комментарий\", function () {\r",
-							"    pm.expect(target.length).to.eql(1);\r",
+							"pm.test(\"должно быть найдено только два комментария\", function () {\r",
+							"    pm.expect(target.length).to.eql(2);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Комментарий должен содержать поля: id, text, event, author, created, positive, lastModify\", function () {\r",
@@ -1878,7 +1881,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/comments/event/1",
+					"raw": "http://localhost:8080/comments/event/107",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1887,7 +1890,7 @@
 					"path": [
 						"comments",
 						"event",
-						"1"
+						"107"
 					]
 				}
 			},
@@ -1920,14 +1923,14 @@
 							"\r",
 							"pm.test(\"Данные в ответе должны соответствовать данным в запросе\", function () {\r",
 							"    pm.expect(target.id).to.not.be.null;\r",
-							"    pm.expect(target.text).equal(\"Positive comment from Guest 1 to Event 1\", 'Текст коментария должен соответствовать тексту в запросе');\r",
+							"    pm.expect(target.text).equal(\"Positive comment from Guest 1 to Event 1\", 'Текст комментария должен соответствовать тексту в запросе');\r",
 							"    pm.expect(target.event).to.not.be.null;\r",
-							"    pm.expect(target.event).equal(1, 'ID события должено быть = 1');\r",
-							"    pm.expect(target.author.id).equal(2, 'ID пользователя должено быть = 2');\r",
+							"    pm.expect(target.event).equal(107, 'ID события должно быть = 107');\r",
+							"    pm.expect(target.author.id).equal(138, 'ID пользователя должно быть = 138');\r",
 							"    pm.expect(target.author.name).equal(\"Guest1 G.G.\", 'Имя пользователя должно быть = Guest1 G.G.');\r",
 							"    pm.expect(target.author.email).equal(\"Guest1@yandex.ru\", 'Email пользователя должен быть = Guest1@yandex.ru');\r",
 							"    pm.expect(target.created).to.not.be.null;\r",
-							"    pm.expect(target.positive.toString()).equal(\"true\", 'Тип коментария должен соответствовать типу в запросе');\r",
+							"    pm.expect(target.positive.toString()).equal(\"true\", 'Тип комментария должен соответствовать типу в запросе');\r",
 							"    pm.expect(target.lastModify).to.not.be.null;\r",
 							"});"
 						],
@@ -1992,14 +1995,14 @@
 							"pm.test(\"Данные в ответе должны соответствовать данным в запросе\", function () {\r",
 							"    pm.expect(target.id).to.not.be.null;\r",
 							"    pm.expect(target.annotation).equal(\"Annotation for Event 1\", 'Аннотация события должна соответствовать аннотации события в запросе');\r",
-							"    pm.expect(target.category.id.toString()).equal(\"1\", 'ID Инициатора события должено быть = 1');\r",
-							"    pm.expect(target.category.name.toString()).equal(\"Category 1\", 'Имя Инициатора события должено быть = Category 1');\r",
+							"    pm.expect(target.category.id.toString()).equal(\"122\", 'ID Инициатора события должно быть = 122');\r",
+							"    pm.expect(target.category.name.toString()).equal(\"Category 1\", 'Имя Инициатора события должно быть = Category 1');\r",
 							"    pm.expect(target.confirmedRequests.toString()).equal(\"0\", 'Количество подтвержденных участников события должен быть = 0');\r",
 							"    pm.expect(target).to.have.property('createdOn').to.not.be.null;\r",
 							"    pm.expect(target.description).equal(\"Description for Event 1\", 'Описание события должно соответствовать описание события в запросе');\r",
 							"    pm.expect(target.eventDate).equal(\"2025-01-29 12:12:12\", 'Дата проведения события должна соответствовать дате проведения события в запросе');\r",
-							"    pm.expect(target.initiator.id.toString()).equal(\"1\", 'ID Инициатора события должено быть = 1');\r",
-							"    pm.expect(target.initiator.name.toString()).equal(\"Initiator I.I.\", 'Имя Инициатора события должено быть = Initiator I.I.');\r",
+							"    pm.expect(target.initiator.id.toString()).equal(\"137\", 'ID Инициатора события должно быть = 137');\r",
+							"    pm.expect(target.initiator.name.toString()).equal(\"Initiator I.I.\", 'Имя Инициатора события должно быть = Initiator I.I.');\r",
 							"    pm.expect(target.location.lat.toString()).equal(\"1\", 'Широта локации проведения события должна соответствовать широте локации проведения события в запросе');\r",
 							"    pm.expect(target.location.lon.toString()).equal(\"1\", 'Долгота локации проведения события должна соответствовать долготе локации проведения события в запросе');\r",
 							"    pm.expect(target.paid.toString()).equal(\"true\", 'Стоимость события должна быть = true');\r",
@@ -2011,8 +2014,8 @@
 							"    pm.expect(target.views.toString()).to.not.be.null;\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Должен быть найден только один комментарий\", function () {\r",
-							"    pm.expect(target.comments.length).to.eql(1);\r",
+							"pm.test(\"должно быть найдено только два комментария\", function () {\r",
+							"    pm.expect(target.comments.length).to.eql(2);\r",
 							"});"
 						],
 						"type": "text/javascript",
@@ -2024,7 +2027,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/events/1",
+					"raw": "http://localhost:8080/events/107",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -2032,7 +2035,7 @@
 					"port": "8080",
 					"path": [
 						"events",
-						"1"
+						"107"
 					]
 				}
 			},
@@ -2076,14 +2079,14 @@
 							"pm.test(\"Данные в ответе должны соответствовать данным в запросе\", function () {\r",
 							"    pm.expect(target.id).to.not.be.null;\r",
 							"    pm.expect(target.annotation).equal(\"Annotation for Event 2\", 'Аннотация события должна соответствовать аннотации события в запросе');\r",
-							"    pm.expect(target.category.id.toString()).equal(\"1\", 'ID Инициатора события должено быть = 1');\r",
-							"    pm.expect(target.category.name.toString()).equal(\"Category 1\", 'Имя Инициатора события должено быть = Category 1');\r",
+							"    pm.expect(target.category.id.toString()).equal(\"122\", 'ID Инициатора события должно быть = 122');\r",
+							"    pm.expect(target.category.name.toString()).equal(\"Category 1\", 'Имя Инициатора события должно быть = Category 1');\r",
 							"    pm.expect(target.confirmedRequests.toString()).equal(\"0\", 'Количество подтвержденных участников события должен быть = 0');\r",
 							"    pm.expect(target).to.have.property('createdOn').to.not.be.null;\r",
 							"    pm.expect(target.description).equal(\"Description for Event 2\", 'Описание события должно соответствовать описание события в запросе');\r",
 							"    pm.expect(target.eventDate).equal(\"2025-01-29 12:12:12\", 'Дата проведения события должна соответствовать дате проведения события в запросе');\r",
-							"    pm.expect(target.initiator.id.toString()).equal(\"1\", 'ID Инициатора события должено быть = 1');\r",
-							"    pm.expect(target.initiator.name.toString()).equal(\"Initiator I.I.\", 'Имя Инициатора события должено быть = Initiator I.I.');\r",
+							"    pm.expect(target.initiator.id.toString()).equal(\"137\", 'ID Инициатора события должно быть = 137');\r",
+							"    pm.expect(target.initiator.name.toString()).equal(\"Initiator I.I.\", 'Имя Инициатора события должно быть = Initiator I.I.');\r",
 							"    pm.expect(target.location.lat.toString()).equal(\"2\", 'Широта локации проведения события должна соответствовать широте локации проведения события в запросе');\r",
 							"    pm.expect(target.location.lon.toString()).equal(\"2\", 'Долгота локации проведения события должна соответствовать долготе локации проведения события в запросе');\r",
 							"    pm.expect(target.paid.toString()).equal(\"true\", 'Стоимость события должна быть = true');\r",
@@ -2095,8 +2098,8 @@
 							"    pm.expect(target.views.toString()).to.not.be.null;\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Должно быть найдено только два комментария\", function () {\r",
-							"    pm.expect(target.comments.length).to.eql(2);\r",
+							"pm.test(\"Должен быть найден только один комментарий\", function () {\r",
+							"    pm.expect(target.comments.length).to.eql(1);\r",
 							"});"
 						],
 						"type": "text/javascript",
@@ -2108,7 +2111,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/events/2",
+					"raw": "http://localhost:8080/events/108",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -2116,7 +2119,7 @@
 					"port": "8080",
 					"path": [
 						"events",
-						"2"
+						"108"
 					]
 				}
 			},
@@ -2137,56 +2140,21 @@
 							"\r",
 							"const target = pm.response.json();\r",
 							"\r",
-							"pm.test(\"Должно быть найдено только два события\", function () {\r",
-							"    pm.expect(target.length).to.eql(2);\r",
+							"pm.test(\"В списке должно быть 10 событий\", function () {\r",
+							"    pm.expect(target.length).to.eql(10);\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Событие 1 должно содержать поля: id, title, annotation, category, paid, eventDate, initiator, description, participantLimit, state, createdOn, location, requestModeration\", function () {\r",
-							"pm.expect(target[0]).to.have.property('id');\r",
-							"pm.expect(target[0]).to.have.property('annotation');\r",
-							"pm.expect(target[0]).to.have.property('category');\r",
-							"pm.expect(target[0]).to.have.property('confirmedRequests');\r",
-							"pm.expect(target[0]).to.have.property('createdOn');\r",
-							"pm.expect(target[0]).to.have.property('description');\r",
-							"pm.expect(target[0]).to.have.property('eventDate');\r",
-							"pm.expect(target[0]).to.have.property('initiator');\r",
-							"pm.expect(target[0]).to.have.property('location');\r",
-							"pm.expect(target[0]).to.have.property('paid');\r",
-							"pm.expect(target[0]).to.have.property('participantLimit');\r",
-							"pm.expect(target[0]).to.have.property('publishedOn');\r",
-							"pm.expect(target[0]).to.have.property('requestModeration');\r",
-							"pm.expect(target[0]).to.have.property('state');\r",
-							"pm.expect(target[0]).to.have.property('title');\r",
-							"pm.expect(target[0]).to.have.property('views');\r",
-							"pm.expect(target[0]).to.have.property('comments');\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Событие 2 должно содержать поля: id, title, annotation, category, paid, eventDate, initiator, description, participantLimit, state, createdOn, location, requestModeration\", function () {\r",
-							"pm.expect(target[1]).to.have.property('id');\r",
-							"pm.expect(target[1]).to.have.property('annotation');\r",
-							"pm.expect(target[1]).to.have.property('category');\r",
-							"pm.expect(target[1]).to.have.property('confirmedRequests');\r",
-							"pm.expect(target[1]).to.have.property('createdOn');\r",
-							"pm.expect(target[1]).to.have.property('description');\r",
-							"pm.expect(target[1]).to.have.property('eventDate');\r",
-							"pm.expect(target[1]).to.have.property('initiator');\r",
-							"pm.expect(target[1]).to.have.property('location');\r",
-							"pm.expect(target[1]).to.have.property('paid');\r",
-							"pm.expect(target[1]).to.have.property('participantLimit');\r",
-							"pm.expect(target[1]).to.have.property('publishedOn');\r",
-							"pm.expect(target[1]).to.have.property('requestModeration');\r",
-							"pm.expect(target[1]).to.have.property('state');\r",
-							"pm.expect(target[1]).to.have.property('title');\r",
-							"pm.expect(target[1]).to.have.property('views');\r",
-							"pm.expect(target[1]).to.have.property('comments');\r",
-							"});\r",
-							"\r",
-							"pm.test(\"У события 1 должен быть найден только один комментарий\", function () {\r",
-							"    pm.expect(target[0].comments.length).to.eql(1);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"У события 2 должно быть найдено только два комментария\", function () {\r",
-							"    pm.expect(target[1].comments.length).to.eql(2);\r",
+							"pm.test(\"У каждого события должно быть поле comments\", function () {\r",
+							"    pm.expect(target[0].comments.length).to.eql(0);\r",
+							"    pm.expect(target[1].comments.length).to.eql(0);\r",
+							"    pm.expect(target[2].comments.length).to.eql(0);\r",
+							"    pm.expect(target[3].comments.length).to.eql(0);\r",
+							"    pm.expect(target[4].comments.length).to.eql(0);\r",
+							"    pm.expect(target[5].comments.length).to.eql(0);\r",
+							"    pm.expect(target[6].comments.length).to.eql(0);\r",
+							"    pm.expect(target[7].comments.length).to.eql(0);\r",
+							"    pm.expect(target[8].comments.length).to.eql(0);\r",
+							"    pm.expect(target[9].comments.length).to.eql(0);\r",
 							"});"
 						],
 						"type": "text/javascript",
@@ -2231,7 +2199,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/admin/users/2",
+					"raw": "http://localhost:8080/admin/users/138",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -2240,14 +2208,14 @@
 					"path": [
 						"admin",
 						"users",
-						"2"
+						"138"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Get all events with all comments after Guest 1 Delete",
+			"name": "Get Event 1 with comments after Guest 1 Delete",
 			"event": [
 				{
 					"listen": "test",
@@ -2261,56 +2229,28 @@
 							"\r",
 							"const target = pm.response.json();\r",
 							"\r",
-							"pm.test(\"Должно быть найдено только два события\", function () {\r",
-							"    pm.expect(target.length).to.eql(2);\r",
+							"pm.test(\"Событие должно содержать поля: id, title, annotation, category, paid, eventDate, initiator, description, participantLimit, state, createdOn, location, requestModeration\", function () {\r",
+							"pm.expect(target).to.have.property('id');\r",
+							"pm.expect(target).to.have.property('annotation');\r",
+							"pm.expect(target).to.have.property('category');\r",
+							"pm.expect(target).to.have.property('confirmedRequests');\r",
+							"pm.expect(target).to.have.property('createdOn');\r",
+							"pm.expect(target).to.have.property('description');\r",
+							"pm.expect(target).to.have.property('eventDate');\r",
+							"pm.expect(target).to.have.property('initiator');\r",
+							"pm.expect(target).to.have.property('location');\r",
+							"pm.expect(target).to.have.property('paid');\r",
+							"pm.expect(target).to.have.property('participantLimit');\r",
+							"pm.expect(target).to.have.property('publishedOn');\r",
+							"pm.expect(target).to.have.property('requestModeration');\r",
+							"pm.expect(target).to.have.property('state');\r",
+							"pm.expect(target).to.have.property('title');\r",
+							"pm.expect(target).to.have.property('views');\r",
+							"pm.expect(target).to.have.property('comments');\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Событие 1 должно содержать поля: id, title, annotation, category, paid, eventDate, initiator, description, participantLimit, state, createdOn, location, requestModeration\", function () {\r",
-							"pm.expect(target[0]).to.have.property('id');\r",
-							"pm.expect(target[0]).to.have.property('annotation');\r",
-							"pm.expect(target[0]).to.have.property('category');\r",
-							"pm.expect(target[0]).to.have.property('confirmedRequests');\r",
-							"pm.expect(target[0]).to.have.property('createdOn');\r",
-							"pm.expect(target[0]).to.have.property('description');\r",
-							"pm.expect(target[0]).to.have.property('eventDate');\r",
-							"pm.expect(target[0]).to.have.property('initiator');\r",
-							"pm.expect(target[0]).to.have.property('location');\r",
-							"pm.expect(target[0]).to.have.property('paid');\r",
-							"pm.expect(target[0]).to.have.property('participantLimit');\r",
-							"pm.expect(target[0]).to.have.property('publishedOn');\r",
-							"pm.expect(target[0]).to.have.property('requestModeration');\r",
-							"pm.expect(target[0]).to.have.property('state');\r",
-							"pm.expect(target[0]).to.have.property('title');\r",
-							"pm.expect(target[0]).to.have.property('views');\r",
-							"pm.expect(target[0]).to.have.property('comments');\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Событие 2 должно содержать поля: id, title, annotation, category, paid, eventDate, initiator, description, participantLimit, state, createdOn, location, requestModeration\", function () {\r",
-							"pm.expect(target[1]).to.have.property('id');\r",
-							"pm.expect(target[1]).to.have.property('annotation');\r",
-							"pm.expect(target[1]).to.have.property('category');\r",
-							"pm.expect(target[1]).to.have.property('confirmedRequests');\r",
-							"pm.expect(target[1]).to.have.property('createdOn');\r",
-							"pm.expect(target[1]).to.have.property('description');\r",
-							"pm.expect(target[1]).to.have.property('eventDate');\r",
-							"pm.expect(target[1]).to.have.property('initiator');\r",
-							"pm.expect(target[1]).to.have.property('location');\r",
-							"pm.expect(target[1]).to.have.property('paid');\r",
-							"pm.expect(target[1]).to.have.property('participantLimit');\r",
-							"pm.expect(target[1]).to.have.property('publishedOn');\r",
-							"pm.expect(target[1]).to.have.property('requestModeration');\r",
-							"pm.expect(target[1]).to.have.property('state');\r",
-							"pm.expect(target[1]).to.have.property('title');\r",
-							"pm.expect(target[1]).to.have.property('views');\r",
-							"pm.expect(target[1]).to.have.property('comments');\r",
-							"});\r",
-							"\r",
-							"pm.test(\"У события 1 не должно быть найдено комментариев\", function () {\r",
-							"    pm.expect(target[0].comments.length).to.eql(0);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"У события 2 должен быть найден только один комментарий\", function () {\r",
-							"    pm.expect(target[1].comments.length).to.eql(1);\r",
+							"pm.test(\"У события должен быть найден только один комментарий\", function () {\r",
+							"    pm.expect(target.comments.length).to.eql(1);\r",
 							"});"
 						],
 						"type": "text/javascript",
@@ -2322,14 +2262,77 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/events",
+					"raw": "http://localhost:8080/events/107",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"events"
+						"events",
+						"107"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Event 2 with comments after Guest 1 Delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function () {\r",
+							"    pm.response.to.have.status(200);  \r",
+							"    pm.response.to.be.withBody;\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"const target = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Событие должно содержать поля: id, title, annotation, category, paid, eventDate, initiator, description, participantLimit, state, createdOn, location, requestModeration\", function () {\r",
+							"pm.expect(target).to.have.property('id');\r",
+							"pm.expect(target).to.have.property('annotation');\r",
+							"pm.expect(target).to.have.property('category');\r",
+							"pm.expect(target).to.have.property('confirmedRequests');\r",
+							"pm.expect(target).to.have.property('createdOn');\r",
+							"pm.expect(target).to.have.property('description');\r",
+							"pm.expect(target).to.have.property('eventDate');\r",
+							"pm.expect(target).to.have.property('initiator');\r",
+							"pm.expect(target).to.have.property('location');\r",
+							"pm.expect(target).to.have.property('paid');\r",
+							"pm.expect(target).to.have.property('participantLimit');\r",
+							"pm.expect(target).to.have.property('publishedOn');\r",
+							"pm.expect(target).to.have.property('requestModeration');\r",
+							"pm.expect(target).to.have.property('state');\r",
+							"pm.expect(target).to.have.property('title');\r",
+							"pm.expect(target).to.have.property('views');\r",
+							"pm.expect(target).to.have.property('comments');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"У события не должно быть комментариев\", function () {\r",
+							"    pm.expect(target.comments.length).to.eql(0);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/events/108",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"events",
+						"108"
 					]
 				}
 			},
