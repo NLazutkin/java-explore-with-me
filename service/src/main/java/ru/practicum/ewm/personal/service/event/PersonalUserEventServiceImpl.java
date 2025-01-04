@@ -9,7 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.ewm.base.dto.ParticipationRequestDto;
+import ru.practicum.ewm.base.dto.request.ParticipationRequestDto;
 import ru.practicum.ewm.base.dto.event.*;
 import ru.practicum.ewm.base.enums.States;
 import ru.practicum.ewm.base.enums.Statuses;
@@ -22,10 +22,10 @@ import ru.practicum.ewm.base.models.Category;
 import ru.practicum.ewm.base.models.Event;
 import ru.practicum.ewm.base.models.Request;
 import ru.practicum.ewm.base.models.User;
-import ru.practicum.ewm.base.repository.CategoryRepository;
-import ru.practicum.ewm.base.repository.EventRepository;
-import ru.practicum.ewm.base.repository.RequestRepository;
-import ru.practicum.ewm.base.repository.UserRepository;
+import ru.practicum.ewm.base.repository.category.CategoryRepository;
+import ru.practicum.ewm.base.repository.event.EventRepository;
+import ru.practicum.ewm.base.repository.request.RequestRepository;
+import ru.practicum.ewm.base.repository.user.UserRepository;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -226,8 +226,8 @@ public class PersonalUserEventServiceImpl implements PersonalUserEventService {
         }
 
         try {
-            eventRepository.flush();
-            requestRepository.flush();
+            eventRepository.save(findEvent);
+            requestRepository.saveAll(requests);
         } catch (DataIntegrityViolationException e) {
             throw new ConflictException(e.getMessage(), e);
         }

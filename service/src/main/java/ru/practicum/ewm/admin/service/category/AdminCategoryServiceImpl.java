@@ -14,8 +14,8 @@ import ru.practicum.ewm.base.exceptions.ConflictException;
 import ru.practicum.ewm.base.exceptions.NotFoundException;
 import ru.practicum.ewm.base.mapper.CategoryMapper;
 import ru.practicum.ewm.base.models.Category;
-import ru.practicum.ewm.base.repository.CategoryRepository;
-import ru.practicum.ewm.base.repository.EventRepository;
+import ru.practicum.ewm.base.repository.category.CategoryRepository;
+import ru.practicum.ewm.base.repository.event.EventRepository;
 
 @Slf4j
 @Service
@@ -41,11 +41,17 @@ public class AdminCategoryServiceImpl implements AdminCategoryService {
     @Transactional
     public CategoryDto save(NewCategoryDto request) {
         Category category = CategoryMapper.mapToEntity(request);
+
+        if (categoryRepository.existsByName(request.getName())) {
+            throw new ConflictException(String.format("Категория \"%s\" уже существует", category.getName()));
+        }
+
         try {
             category = categoryRepository.save(category);
         } catch (DataIntegrityViolationException e) {
-            throw new ConflictException(String.format("Категория \"%s\" уже существует", category.getName()), e);
+            throw new ConflictException(e.getMessage(), e);
         }
+
         log.info("Сохраняем данные о категории {}", request.getName());
         return CategoryMapper.mapToDto(category);
     }

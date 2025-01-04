@@ -7,6 +7,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.validator.constraints.Length;
 import ru.practicum.ewm.base.dto.location.LocationDto;
+import ru.practicum.ewm.base.util.DatePattern;
 import ru.practicum.ewm.base.util.IfNotNullIsNotEmpty.IfNotNullIsNotEmpty;
 
 import java.time.LocalDateTime;
@@ -29,7 +30,7 @@ public abstract class UpdateEventRequest {
     @Length(min = 20, max = 7000)
     String description;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatePattern.DATE_TIME_PATTERN)
     LocalDateTime eventDate;
 
     @Valid

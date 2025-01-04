@@ -11,7 +11,7 @@ import ru.practicum.ewm.base.dto.category.CategoryDto;
 import ru.practicum.ewm.base.exceptions.NotFoundException;
 import ru.practicum.ewm.base.mapper.CategoryMapper;
 import ru.practicum.ewm.base.models.Category;
-import ru.practicum.ewm.base.repository.CategoryRepository;
+import ru.practicum.ewm.base.repository.category.CategoryRepository;
 
 import java.util.Collection;
 import java.util.List;

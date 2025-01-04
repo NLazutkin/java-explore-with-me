@@ -10,6 +10,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.validator.constraints.Length;
 import ru.practicum.ewm.base.dto.location.LocationDto;
+import ru.practicum.ewm.base.util.DatePattern;
 
 import java.time.LocalDateTime;
 
@@ -33,7 +34,7 @@ public class NewEventDto {
     String description;
 
     @NotNull(message = "Не задана дата проведения события")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatePattern.DATE_TIME_PATTERN)
     LocalDateTime eventDate;
 
     @Valid
