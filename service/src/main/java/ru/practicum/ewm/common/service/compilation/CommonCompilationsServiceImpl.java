@@ -11,7 +11,7 @@ import ru.practicum.ewm.base.dto.compilation.CompilationDto;
 import ru.practicum.ewm.base.exceptions.NotFoundException;
 import ru.practicum.ewm.base.mapper.CompilationMapper;
 import ru.practicum.ewm.base.models.Compilation;
-import ru.practicum.ewm.base.repository.CompilationRepository;
+import ru.practicum.ewm.base.repository.compilation.CompilationRepository;
 
 import java.util.Collection;
 import java.util.List;

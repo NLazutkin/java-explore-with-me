@@ -15,7 +15,7 @@ import ru.practicum.ewm.base.exceptions.NotFoundException;
 import ru.practicum.ewm.base.mapper.UserMapper;
 import ru.practicum.ewm.base.models.User;
 import ru.practicum.ewm.base.exceptions.ConflictException;
-import ru.practicum.ewm.base.repository.UserRepository;
+import ru.practicum.ewm.base.repository.user.UserRepository;
 
 import java.util.Collection;
 import java.util.List;
@@ -41,10 +41,15 @@ public class AdminUserServiceImpl implements AdminUserService {
     @Transactional
     public UserDto save(NewUserRequest request) {
         User user = UserMapper.mapToEntity(request);
+
+        if (userRepository.existsByEmail(request.getEmail())) {
+            throw new ConflictException(String.format("Email %s уже занят", user.getEmail()));
+        }
+
         try {
             user = userRepository.save(user);
         } catch (DataIntegrityViolationException e) {
-            throw new ConflictException(String.format("Email %s уже занят", user.getEmail()), e);
+            throw new ConflictException(e.getMessage(), e);
         }
         log.info("Сохраняем данные о пользователе {}", request.getName());
         return UserMapper.mapToDto(user);

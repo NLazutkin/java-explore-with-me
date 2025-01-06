@@ -1,4 +1,4 @@
-package ru.practicum.ewm.base.repository;
+package ru.practicum.ewm.base.repository.event;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;

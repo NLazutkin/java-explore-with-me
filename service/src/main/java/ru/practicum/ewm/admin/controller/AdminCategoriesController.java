@@ -21,7 +21,7 @@ public class AdminCategoriesController {
 
     private final AdminCategoryService service;
 
-    @PostMapping()
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public CategoryDto save(@RequestBody @Valid NewCategoryDto request) {
         log.info("Получен запрос POST /admin/categories c новой категорией: \"{}\"", request.getName());

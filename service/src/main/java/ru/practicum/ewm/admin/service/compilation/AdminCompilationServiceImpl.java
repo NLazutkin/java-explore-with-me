@@ -15,8 +15,8 @@ import ru.practicum.ewm.base.exceptions.NotFoundException;
 import ru.practicum.ewm.base.mapper.CompilationMapper;
 import ru.practicum.ewm.base.models.Compilation;
 import ru.practicum.ewm.base.models.Event;
-import ru.practicum.ewm.base.repository.CompilationRepository;
-import ru.practicum.ewm.base.repository.EventRepository;
+import ru.practicum.ewm.base.repository.compilation.CompilationRepository;
+import ru.practicum.ewm.base.repository.event.EventRepository;
 
 import java.util.Set;
 
@@ -48,10 +48,14 @@ public class AdminCompilationServiceImpl implements AdminCompilationService {
     public CompilationDto save(NewCompilationDto request) {
         Compilation compilation = CompilationMapper.mapToEntity(request, findEvents(request.getEvents()));
 
+        if (compilationRepository.existsByTitle(request.getTitle())) {
+            throw new ConflictException(String.format("Подборка с заголовком %s уже существует", compilation.getTitle()));
+        }
+
         try {
             compilation = compilationRepository.save(compilation);
         } catch (DataIntegrityViolationException e) {
-            throw new ConflictException(String.format("Подборка с заголовком %s уже существует", compilation.getTitle()), e);
+            throw new ConflictException(e.getMessage(), e);
         }
 
         log.info("Сохраняем данные о подборке {}", compilation.getTitle());

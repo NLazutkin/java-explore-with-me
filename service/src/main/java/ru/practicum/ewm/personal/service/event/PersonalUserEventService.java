@@ -1,6 +1,6 @@
 package ru.practicum.ewm.personal.service.event;
 
-import ru.practicum.ewm.base.dto.ParticipationRequestDto;
+import ru.practicum.ewm.base.dto.request.ParticipationRequestDto;
 import ru.practicum.ewm.base.dto.event.*;
 
 import java.util.Collection;

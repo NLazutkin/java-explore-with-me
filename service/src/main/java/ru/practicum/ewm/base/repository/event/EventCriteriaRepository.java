@@ -1,4 +1,4 @@
-package ru.practicum.ewm.base.repository;
+package ru.practicum.ewm.base.repository.event;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -12,5 +12,4 @@ public interface EventCriteriaRepository {
     Page<Event> findAllWithCriteria(PageRequest pageRequest, EventCriteria eventSearchCriteria);
 
     Page<Event> findAllWithCriteria(PageRequest pageRequest, NewParamEventDto newParamEventDto);
-
 }
